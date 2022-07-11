@@ -15,7 +15,7 @@ conexion = MySQL(app)
 def listar_personajes():
     try:
         cursor = conexion.connection.cursor()
-        sql = "SELECT id,nombre, edad, raza,descripcion,imagen FROM personajes"
+        sql = "SELECT * FROM personajes"
         cursor.execute(sql)
         datos = cursor.fetchall()
         personajes = []
@@ -26,7 +26,10 @@ def listar_personajes():
                 'edad': fila[2],
                 'raza': fila[3],
                 'descripcion':fila[4],
-                'imagen':fila[5]
+                'imagen':fila[5],
+                'poder':fila[6],
+                'velocidad':fila[7],
+                'ataque':fila[8],
             }
             personajes.append(personaje)
         return jsonify({'personajes':personajes})
@@ -37,7 +40,7 @@ def listar_personajes():
 def mostrar_personaje(codigo):
     try:
         cursor = conexion.connection.cursor()
-        sql = "SELECT id,nombre, edad, raza,descripcion,imagen FROM personajes WHERE id = `{0}`".format(codigo)
+        sql = "SELECT * FROM personajes WHERE id = '{0}'".format(codigo)
         cursor.execute(sql)
         datos = cursor.fetchone()
         if datos != None:
@@ -47,7 +50,10 @@ def mostrar_personaje(codigo):
                 'edad': datos[2],
                 'raza': datos[3],
                 'descripcion':datos[4],
-                'imagen':datos[5]
+                'imagen':datos[5],
+                'poder':datos[6],
+                'velocidad':datos[7],
+                'ataque':datos[8],
             }
             print
             return jsonify({'personajes':personaje})
