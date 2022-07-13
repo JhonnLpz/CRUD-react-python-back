@@ -68,7 +68,7 @@ def mostrar_personaje(codigo):
 
 
 @cross_origin
-@app.route('/insertaPj', methods=['POST'])
+@app.route('/insertaPj', methods = ['POST'])
 def agregar_personaje():
     try:
         cursor = conexion.connection.cursor()
