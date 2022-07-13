@@ -58,7 +58,6 @@ def mostrar_personaje(codigo):
                 'velocidad': datos[7],
                 'ataque': datos[8],
             }
-            print
             return jsonify({'personajes': personaje})
 
         else:
