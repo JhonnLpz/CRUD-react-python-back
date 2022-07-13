@@ -87,7 +87,7 @@ def agregar_personaje():
         cursor.execute(sql)
         cursor.commit()
     except Exception as ex:
-        return jsonify({'mensaje': "Error"})
+        return jsonify({'mensaje': "Error"},ex)
 
 
 def not_found_page(error):
